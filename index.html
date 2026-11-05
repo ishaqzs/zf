@@ -142,7 +142,10 @@
             --mdui-color-primary: 255, 255, 255;
         }
 
-        .photo-text h4 { margin: 0; font-size: 1.3rem; font-weight: 800; color: white !important; }
+        .photo-text {
+            max-width: 680px;
+        }
+        .photo-text h1, .photo-text h4 { margin: 0; font-size: 1.3rem; font-weight: 800; color: white !important; }
         .photo-text p { margin: 6px 0 0; font-size: 0.95rem; opacity: 0.85; color: white !important; }
 
         /* --- 4. 首页项目导航 --- */
@@ -463,12 +466,9 @@
     <section class="hero-section">
         <div class="photo-info-box">
             <div class="photo-text">
-                <h4 data-i18n="photo_title">浙江丽水 · 云和梯田</h4>
-                <p data-i18n="photo_desc">摄于2023年旅行时。</p>
+                <h1 data-i18n="hero_title">我欲穿花寻路，直入白云深处。</h1>
+                <p data-i18n="hero_desc">欢迎造访百品入口网站。</p>
             </div>
-            <mdui-button variant="tonal" style="--mdui-color-secondary-container: rgba(255,255,255,0.15); color: white;" href="https://baipin.pw/">
-                <mdui-icon slot="icon" name="arrow_forward"></mdui-icon>
-            </mdui-button>
         </div>
     </section>
 
