@@ -43,6 +43,28 @@
             padding-top: var(--nav-height);
         }
 
+        html[dir="rtl"] body,
+        html[dir="rtl"] .main-card,
+        html[dir="rtl"] .sidebar-card,
+        html[dir="rtl"] .photo-text,
+        html[dir="rtl"] .project-showcase-header,
+        html[dir="rtl"] .project-showcase-content,
+        html[dir="rtl"] .project-showcase-link,
+        html[dir="rtl"] .project-showcase-subtitle {
+            direction: rtl;
+            text-align: right;
+        }
+
+        html[dir="rtl"] .nav-links-container {
+            margin-left: 0;
+            margin-right: 20px;
+        }
+
+        html[dir="rtl"] .project-showcase-controls {
+            margin-left: 0;
+            margin-right: auto;
+        }
+
         body::before {
             content: "";
             position: fixed;
@@ -503,7 +525,7 @@
     <footer>
         <div style="max-width: 1200px; margin: 0 auto;">
             <div style="font-weight: 900; font-size: 1.2rem; color: #fff; margin-bottom: 8px; letter-spacing: 1px;">BAIPIN.PW</div>
-            <p style="font-size: 0.8rem;">&copy; 2026 百品. All rights reserved. <a href="https://baipin.pw/privacy-policy" target="_blank" data-i18n="pp" class="mdui-link" style="color: rgb(var(--mdui-color-primary));">私隐政策</a></p>
+            <p style="font-size: 0.8rem;">&copy; 2026 百品. All rights reserved. <a href="https://baipin.pw/privacy-policy" target="_blank" data-i18n="pp" class="mdui-link" style="color: rgba(255,255,255,0.8);">私隐政策</a></p>
         </div>
     </footer>
 
@@ -530,7 +552,7 @@
 
         themeToggle.addEventListener('click', () => {
             const isCurrentlyDark = html.classList.contains('mdui-theme-dark') || 
-                                   (html.classList.contains('mdui-theme-auto') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                                    (html.classList.contains('mdui-theme-auto') && window.matchMedia('(prefers-color-scheme: dark)').matches);
             const nextTheme = isCurrentlyDark ? 'light' : 'dark';
             applyTheme(nextTheme);
             localStorage.setItem('theme', nextTheme);
@@ -586,6 +608,10 @@
         }
 
         function applyLanguage(lang) {
+            document.documentElement.lang = lang === 'ps' ? 'ps' : 'zh-CN';
+            document.documentElement.dir = lang === 'ps' ? 'rtl' : 'ltr';
+            document.body.dir = lang === 'ps' ? 'rtl' : 'ltr';
+
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
                 if (i18n[lang][key]) el.innerText = i18n[lang][key];
