@@ -8,8 +8,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="https://khan.af/svd2.svg">
     <link rel="icon" type="image/png" sizes="16x16" href="https://khan.af/svd2.svg">
     <link rel="shortcut icon" href="https://khan.af/svd2.svg">
+
     <script>
-        // Resolve The saved/system theme before the first paint.
         (() => {
             const savedTheme = localStorage.getItem('theme') || 'auto';
             const isDark = savedTheme === 'dark' ||
@@ -17,42 +17,33 @@
             document.documentElement.dataset.themeResolved = isDark ? 'dark' : 'light';
         })();
     </script>
-    
+
     <link rel="stylesheet" href="https://unpkg.com/mdui@2.0.3/mdui.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://unpkg.com/mdui@2.0.3/mdui.global.js"></script>
-    
+
     <style>
         :root {
             --nav-height: 64px;
             --content-max-width: 1200px;
         }
 
-        /* --- 1. 全局背景逻辑 --- */
         html {
             background-color: #ffffff;
             transition: background-color 0.3s;
         }
-        html.mdui-theme-dark { background-color: #121212; }
+        html.mdui-theme-dark {
+            background-color: #121212;
+        }
 
         body {
-            margin: 0; padding: 0;
-            width: 100%; overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
             font-family: "Product Sans", system-ui, -apple-system, sans-serif;
             background-color: transparent !important;
             padding-top: var(--nav-height);
-        }
-
-        html[dir="rtl"] body,
-        html[dir="rtl"] .main-card,
-        html[dir="rtl"] .sidebar-card,
-        html[dir="rtl"] .photo-text,
-        html[dir="rtl"] .project-showcase-header,
-        html[dir="rtl"] .project-showcase-content,
-        html[dir="rtl"] .project-showcase-link,
-        html[dir="rtl"] .project-showcase-subtitle {
-            direction: rtl;
-            text-align: right;
         }
 
         html[dir="rtl"] .nav-links-container {
@@ -60,94 +51,142 @@
             margin-right: 20px;
         }
 
-html[dir="rtl"] .project-showcase-controls {
-    margin-left: 0;
-    margin-right: auto;
-    direction: ltr;
+        html[dir="rtl"] .project-showcase-controls {
+            margin-left: 0;
+            margin-right: auto;
+            direction: ltr;
         }
 
         body::before {
             content: "";
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: url('https://upload.wikimedia.org/wikipedia/commons/1/11/Nomads_in_Kandahar_province.jpg?') center/cover no-repeat;
             z-index: -1;
             transition: filter 0.5s ease;
         }
-        .mdui-theme-dark body::before { filter: brightness(0.6) contrast(1.1); }
+        .mdui-theme-dark body::before {
+            filter: brightness(0.6) contrast(1.1);
+        }
 
-        /* --- 2. 导航栏适配 --- */
         .custom-app-bar {
             height: var(--nav-height) !important;
             background-color: rgba(255, 255, 255, 0.85) !important;
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.08);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
             padding: 0 5%;
-            display: flex; align-items: center;
-            position: fixed; top: 0; left: 0; right: 0;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
             z-index: 1000;
             box-sizing: border-box;
             transition: all 0.3s;
         }
 
-        /* 重点：白天模式下的图标与文字颜色变量覆盖 */
         .mdui-theme-light .custom-app-bar {
-            --mdui-color-on-surface: 0, 0, 0; 
+            --mdui-color-on-surface: 0, 0, 0;
             --mdui-color-on-surface-variant: 0, 0, 0;
             --mdui-color-primary: 0, 0, 0;
             color: rgba(0, 0, 0, 0.9);
         }
-        
+
         .mdui-theme-dark .custom-app-bar {
             background-color: rgba(28, 27, 31, 0.85) !important;
-            border-bottom-color: rgba(255,255,255,0.1);
+            border-bottom-color: rgba(255, 255, 255, 0.1);
             --mdui-color-on-surface: 230, 225, 229;
             color: #e6e1e5;
         }
 
-        .nav-logo { height: 28px; width: auto; cursor: pointer; flex-shrink: 0; }
-        .nav-links-container { margin-left: 20px; display: flex; gap: 4px; }
+        .nav-logo {
+            height: 28px;
+            width: auto;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
 
-        /* --- 3. Hero 区域 (始终保持白色，因为在图片上) --- */
-        .hero-section {
-            width: 100%; height: 80vh;
-            display: flex; align-items: flex-end; justify-content: center;
+        .nav-links-container {
+            margin-left: 20px;
+            display: flex;
+            gap: 4px;
         }
-        
-        .photo-info-box {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
-            padding: 24px 32px;
-            margin-bottom: 400px; 
-            width: calc(100% - 40px);
+
+.hero-section {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+        .floating-container {
             max-width: var(--content-max-width);
-            display: flex; align-items: center; justify-content: space-between;
+            width: calc(100% - 40px);
+            position: relative;
             z-index: 20;
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 32px;
             box-sizing: border-box;
-            color: white !important;
+            margin: 0 auto;
         }
-        
-        .photo-info-box mdui-button {
+
+        .main-card,
+        .sidebar-card {
+            transition: background 0.3s, color 0.3s;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+            background: rgba(0, 0, 0, 0.38) !important;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 24px;
+            color: #ffffff !important;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        .main-card {
+            padding: 40px;
+        }
+
+        .sidebar-card {
+            padding: 40px 24px;
+            text-align: center;
+            height: fit-content;
+        }
+
+        .main-card h1,
+        .main-card p,
+        .main-card h3,
+        .main-card span,
+        .sidebar-card h2,
+        .sidebar-card p,
+        .sidebar-card span {
+            color: #ffffff !important;
+        }
+
+        .main-card .mdui-button {
             --mdui-color-on-secondary-container: 255, 255, 255;
             --mdui-color-primary: 255, 255, 255;
         }
 
-        .photo-text {
-            max-width: 680px;
+        .sidebar-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid rgba(255,255,255,0.9);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            margin-bottom: 16px;
         }
-        .photo-text h1, .photo-text h4 { margin: 0; font-size: 1.3rem; font-weight: 800; color: white !important; }
-        .photo-text p { margin: 6px 0 0; font-size: 0.95rem; opacity: 0.85; color: white !important; }
 
-        /* --- 4. 首页项目导航. --- */
         .project-showcase {
             max-width: var(--content-max-width);
             width: calc(100% - 40px);
-            margin: -308px auto 72px;
+            margin: 32px auto 72px;
             position: relative;
             z-index: 40;
         }
@@ -200,7 +239,9 @@ html[dir="rtl"] .project-showcase-controls {
             padding: 2px 2px 12px;
         }
 
-        .project-showcase-track::-webkit-scrollbar { display: none; }
+        .project-showcase-track::-webkit-scrollbar {
+            display: none;
+        }
 
         .project-showcase-card {
             min-width: 0;
@@ -291,81 +332,77 @@ html[dir="rtl"] .project-showcase-controls {
             color: #777;
         }
 
-        /* --- 5. 卡片容器 --- */
-        .floating-container {
-            max-width: var(--content-max-width);
-            margin: 0 auto 60px;
-            position: relative;
-            z-index: 30;
-            display: grid;
-            grid-template-columns: 1fr 350px;
-            gap: 32px; 
-            width: calc(100% - 40px);
-            box-sizing: border-box;
-        }
-
-        .main-card, .sidebar-card {
-            transition: background 0.3s, color 0.3s;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-            /* 使用 MDUI 的标准表面颜色变量，它会自动随主题切换 */
-            background-color: rgb(var(--mdui-color-surface-container)) !important;
-            color: rgb(var(--mdui-color-on-surface));
-        }
-
-        /* 白天模式卡片内部文字与图标颜色 */
-        .mdui-theme-light .main-card,
-        .mdui-theme-light .sidebar-card {
-            background-color: #ffffff !important;
-            --mdui-color-on-surface: 0, 0, 0;
-            --mdui-color-on-surface-variant: 60, 60, 60;
-            color: rgba(0, 0, 0, 0.87);
-        }
-
-        .mdui-theme-dark .main-card { background-color: #1c1b1f !important; color: #e6e1e5; }
-        .mdui-theme-dark .sidebar-card { background-color: #2b2930 !important; color: #e6e1e5; }
-
-        .main-card { padding: 40px; border-radius: 24px; }
-        .sidebar-card { padding: 40px 24px; border-radius: 24px; text-align: center; height: fit-content; }
-
         .rss-item {
-            display: block; padding: 16px; border-radius: 12px; 
-            background: rgba(128,128,128,0.05); border: 1px solid rgba(128,128,128,0.1); 
-            margin-bottom: 12px; transition: all 0.3s; text-decoration: none; color: inherit;
+            display: block;
+            padding: 16px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            margin-bottom: 12px;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: #ffffff;
         }
 
-        /* 移动端适配 */
         @media (max-width: 900px) {
             .nav-links-container { display: none; }
             .mobile-menu-btn { display: inline-flex !important; }
-            .project-showcase { width: calc(100% - 32px); margin-top: -330px; margin-bottom: 52px; }
-            .project-showcase-header { align-items: flex-end; }
-            .project-showcase-subtitle { max-width: 230px; }
-            .project-showcase-track { grid-auto-columns: minmax(250px, 82vw); }
-            .floating-container { grid-template-columns: 1fr; margin-top: 0; width: calc(100% - 32px); }
-            .photo-info-box { width: calc(100% - 32px); margin-bottom: 500px; padding: 16px 20px; }
-            .sidebar-card { order: -1; }
+            .hero-section {
+                padding: 30px 0 18px;
+            }
+            .project-showcase {
+                width: calc(100% - 32px);
+                margin-top: 20px;
+                margin-bottom: 52px;
+            }
+            .project-showcase-header {
+                align-items: flex-end;
+            }
+            .project-showcase-subtitle {
+                max-width: 230px;
+            }
+            .project-showcase-track {
+                grid-auto-columns: minmax(250px, 82vw);
+            }
+            .floating-container {
+                grid-template-columns: 1fr;
+                width: calc(100% - 32px);
+            }
+            .sidebar-card {
+                order: -1;
+            }
         }
 
-        .mobile-menu-btn { display: none; }
-        footer { background: #121212; color: #777; padding: 60px 20px; text-align: center; }
+        .mobile-menu-btn {
+            display: none;
+        }
 
-        /* Final resolved-theme colors for buttons, cards and project icons. */
+        footer {
+            background: #121212;
+            color: #777;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
         html[data-theme-resolved="light"] .custom-app-bar,
         html[data-theme-resolved="light"] .custom-app-bar mdui-button,
         html[data-theme-resolved="light"] .custom-app-bar mdui-button-icon,
         html[data-theme-resolved="light"] .custom-app-bar mdui-icon {
             color: #111827 !important;
         }
+
         html[data-theme-resolved="dark"] .custom-app-bar {
             background-color: rgba(28, 27, 31, 0.85) !important;
             border-bottom-color: rgba(255, 255, 255, 0.1);
         }
+
         html[data-theme-resolved="dark"] .custom-app-bar,
         html[data-theme-resolved="dark"] .custom-app-bar mdui-button,
         html[data-theme-resolved="dark"] .custom-app-bar mdui-button-icon,
         html[data-theme-resolved="dark"] .custom-app-bar mdui-icon {
             color: #f3f4f6 !important;
         }
+
         html[data-theme-resolved="light"] mdui-button[variant="text"],
         html[data-theme-resolved="light"] mdui-button[variant="outlined"],
         html[data-theme-resolved="light"] mdui-button[variant="tonal"],
@@ -373,10 +410,12 @@ html[dir="rtl"] .project-showcase-controls {
         html[data-theme-resolved="light"] mdui-icon {
             color: #111827 !important;
         }
+
         html[data-theme-resolved="light"] mdui-button[variant="filled"] {
             background: #1f2937 !important;
             color: #ffffff !important;
         }
+
         html[data-theme-resolved="dark"] mdui-button[variant="text"],
         html[data-theme-resolved="dark"] mdui-button[variant="outlined"],
         html[data-theme-resolved="dark"] mdui-button[variant="tonal"],
@@ -384,43 +423,34 @@ html[dir="rtl"] .project-showcase-controls {
         html[data-theme-resolved="dark"] mdui-icon {
             color: #f3f4f6 !important;
         }
+
         html[data-theme-resolved="dark"] mdui-button[variant="filled"] {
             background: #e5e7eb !important;
             color: #111827 !important;
         }
+
         html[data-theme-resolved="light"] .project-showcase-card {
             color: #171717;
             background: #ffffff;
-        } 
+        }
+
         html[data-theme-resolved="light"] .project-showcase-content p {
             color: #5c6265;
         }
+
         html[data-theme-resolved="dark"] .project-showcase-card {
             color: #f3f4f6;
             background: #25252c;
         }
-        html[data-theme-resolved="light"] .main-card,
-        html[data-theme-resolved="light"] .sidebar-card {
-            background: #ffffff !important;
-            color: #111827 !important;
+
+        html[data-theme-resolved="light"] .project-showcase-link {
+            color: #0f7b6e;
         }
-        html[data-theme-resolved="dark"] .main-card {
-            background: #1c1b1f !important;
-            color: #e6e1e5 !important;
+
+        html[data-theme-resolved="dark"] .project-showcase-link {
+            color: #7dd3c7;
         }
-        html[data-theme-resolved="dark"] .sidebar-card {
-            background: #2b2930 !important;
-            color: #e6e1e5 !important;
-        }
-        html[data-theme-resolved="dark"] .rss-item {
-            background: rgba(255, 255, 255, 0.06);
-            border-color: rgba(255, 255, 255, 0.12);
-        }
-        html[data-theme-resolved="dark"] .project-showcase-content p {
-            color: #c7c9d1;
-        }
-        html[data-theme-resolved="light"] .project-showcase-link { color: #0f7b6e; }
-        html[data-theme-resolved="dark"] .project-showcase-link { color: #7dd3c7; }
+
         html[data-theme-resolved="light"] .project-showcase-icon,
         html[data-theme-resolved="light"] .project-showcase-icon mdui-icon,
         html[data-theme-resolved="dark"] .project-showcase-icon,
@@ -429,6 +459,7 @@ html[dir="rtl"] .project-showcase-controls {
         }
     </style>
 </head>
+
 <body class="mdui-theme-auto">
 
     <mdui-navigation-drawer id="drawer" placement="right" close-on-overlay-click>
@@ -443,7 +474,7 @@ html[dir="rtl"] .project-showcase-controls {
 
     <header class="custom-app-bar">
         <img src="https://khan.af/svd2.svg" alt="Logo" class="nav-logo" onclick="window.location.href='#'">
-        
+
         <div class="nav-links-container">
             <mdui-button variant="text" href="#"><mdui-icon slot="icon" name="home"></mdui-icon><span data-i18n="nav_home">首页</span></mdui-button>
             <mdui-button variant="text" href="https://baipin.pw"><mdui-icon slot="icon" name="auto_stories"></mdui-icon><span data-i18n="nav_blog">博客</span></mdui-button>
@@ -452,18 +483,53 @@ html[dir="rtl"] .project-showcase-controls {
         </div>
 
         <div style="flex-grow: 1"></div>
-        
+
         <mdui-button-icon id="theme-toggle" icon="light_mode"></mdui-button-icon>
         <mdui-button-icon icon="translate" id="lang-btn"></mdui-button-icon>
         <mdui-button-icon icon="menu" class="mobile-menu-btn" onclick="document.getElementById('drawer').open = true"></mdui-button-icon>
     </header>
 
     <section class="hero-section">
-        <div class="photo-info-box">
-            <div class="photo-text">
-                <h1 data-i18n="hero_title">我欲穿花寻路，直入白云深处。</h1>
-                <p data-i18n="hero_desc">欢迎造访百品入口网站。</p>
-            </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+            <aside class="sidebar-card">
+                <img src="/person.png" alt="person">
+                <h2 style="margin: 0; font-weight: 700;">Baipin</h2>
+                <p style="font-size: 0.9rem;" data-i18n="bio">Student / Dennis</p>
+
+                <mdui-divider style="margin: 20px 0;"></mdui-divider>
+
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 24px;">
+                    <mdui-button-icon icon="code" href="https://github.com/baipin"></mdui-button-icon>
+                    <mdui-button-icon icon="send" href="https://t.me/baipin_pw"></mdui-button-icon>
+                    <mdui-button-icon icon="mail_outline" href="mailto:root@baipin.pw"></mdui-button-icon>
+                    <mdui-button-icon icon="rss_feed" href="https://baipin.pw/feed"></mdui-button-icon>
+                </div>
+
+                <mdui-button variant="tonal" full-width style="border-radius: 12px;" href="https://baipin.pw/about" data-i18n="btn_follow">关于我</mdui-button>
+            </aside>
         </div>
     </section>
 
@@ -481,48 +547,6 @@ html[dir="rtl"] .project-showcase-controls {
         <div class="project-showcase-track" id="homepage-projects-track"></div>
     </section>
 
-    <div class="floating-container">
-        <main class="main-card">
-            <h1 style="font-size: 2.5rem; margin: 0 0 20px 0; font-weight: 800; line-height: 1.2;" data-i18n="hero_title">我欲穿花寻路，直入白云深处。</h1>
-            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 32px;" data-i18n="hero_desc">
-                欢迎造访百品入口网站。
-            </p>
-            
-            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                <mdui-button variant="filled" href="https://baipin.pw" data-i18n="enter_blog">进入博客</mdui-button>
-                <mdui-button variant="filled" href="projects.html" data-i18n="projects">查看项目</mdui-button>
-                <mdui-button variant="outlined" href="https://baipin.pw/about" data-i18n="nav_about">关于我</mdui-button>
-            </div>
-
-            <mdui-divider style="margin: 40px 0;"></mdui-divider>
-
-            <h3 style="display: flex; align-items: center; gap: 10px; margin-bottom: 24px;">
-                <mdui-icon name="rss_feed" style="color: #f26522 !important;"></mdui-icon> 
-                <span data-i18n="news_title">最新文章</span>
-            </h3>
-            <div id="rss-feed-container">
-                <div style="padding: 20px; text-align: center;"><mdui-circular-progress></mdui-circular-progress></div>
-            </div>
-        </main>
-
-        <aside class="sidebar-card">
-            <img src="/person.png" style="width: 100px; height: 100px; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 16px;">
-            <h2 style="margin: 0; font-weight: 700;">Baipin</h2>
-            <p style="font-size: 0.9rem;" data-i18n="bio">Student / Dennis</p>
-            
-            <mdui-divider style="margin: 20px 0;"></mdui-divider>
-
-            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 24px;">
-                <mdui-button-icon icon="code" href="https://github.com/baipin"></mdui-button-icon>
-                <mdui-button-icon icon="send" href="https://t.me/baipin_pw"></mdui-button-icon>
-                <mdui-button-icon icon="mail_outline" href="mailto:root@baipin.pw"></mdui-button-icon>
-                <mdui-button-icon icon="rss_feed" href="https://baipin.pw/feed"></mdui-button-icon>
-            </div>
-
-            <mdui-button variant="tonal" full-width style="border-radius: 12px;" href="https://baipin.pw/about" data-i18n="btn_follow">关于我</mdui-button>
-        </aside>
-    </div>
-
     <footer>
         <div style="max-width: 1200px; margin: 0 auto;">
             <div style="font-weight: 900; font-size: 1.2rem; color: #fff; margin-bottom: 8px; letter-spacing: 1px;">BAIPIN.PW</div>
@@ -537,8 +561,8 @@ html[dir="rtl"] .project-showcase-controls {
         const drawer = document.getElementById('drawer');
 
         function updateIcon() {
-            const isDark = html.classList.contains('mdui-theme-dark') || 
-                          (html.classList.contains('mdui-theme-auto') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            const isDark = html.classList.contains('mdui-theme-dark') ||
+                (html.classList.contains('mdui-theme-auto') && window.matchMedia('(prefers-color-scheme: dark)').matches);
             themeToggle.icon = isDark ? 'dark_mode' : 'light_mode';
         }
 
@@ -552,37 +576,62 @@ html[dir="rtl"] .project-showcase-controls {
         }
 
         themeToggle.addEventListener('click', () => {
-            const isCurrentlyDark = html.classList.contains('mdui-theme-dark') || 
-                                    (html.classList.contains('mdui-theme-auto') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            const isCurrentlyDark = html.classList.contains('mdui-theme-dark') ||
+                (html.classList.contains('mdui-theme-auto') && window.matchMedia('(prefers-color-scheme: dark)').matches);
             const nextTheme = isCurrentlyDark ? 'light' : 'dark';
             applyTheme(nextTheme);
             localStorage.setItem('theme', nextTheme);
         });
 
-        document.getElementById('drawer-list').addEventListener('click', () => { drawer.open = false; });
+        document.getElementById('drawer-list').addEventListener('click', () => {
+            drawer.open = false;
+        });
 
         const i18n = {
             'zh-CN': {
-                nav_home: '首页', nav_blog: '博客', nav_projects: '项目', nav_about: '关于',
+                nav_home: '首页',
+                nav_blog: '博客',
+                nav_projects: '项目',
+                nav_about: '关于',
                 hero_title: '我欲穿花寻路，直入白云深处。',
                 hero_desc: '欢迎造访百品入口网站。',
-                photo_title: '浙江丽水 · 云和梯田', photo_desc: '摄于2023年旅行时。',
-                news_title: '最新文章', bio: 'Student / Dennis', btn_follow: '关于我', enter_blog: '进入博客', projects: '查看项目', pp:'私隐政策',
-                showcase_title: '项目导航', showcase_desc: '探索百品正在运行和曾经制作的项目',
-                project_visit: '访问项目', project_unavailable: '项目已停止'
+                photo_title: '浙江丽水 · 云和梯田',
+                photo_desc: '摄于2023年旅行时。',
+                news_title: '最新文章',
+                bio: 'Student / Dennis',
+                btn_follow: '关于我',
+                enter_blog: '进入博客',
+                projects: '查看项目',
+                pp: '私隐政策',
+                showcase_title: '项目导航',
+                showcase_desc: '探索百品正在运行和曾经制作的项目',
+                project_visit: '访问项目',
+                project_unavailable: '项目已停止'
             },
             'ps': {
-                nav_home: 'Home', nav_blog: 'Blog', nav_projects: 'Projects', nav_about: 'About',
+                nav_home: 'Home',
+                nav_blog: 'Blog',
+                nav_projects: 'Projects',
+                nav_about: 'About',
                 hero_title: 'Seeking paths through flowers, straight into the clouds.',
                 hero_desc: 'Welcome to Baipin Portal.',
-                photo_title: 'زرغونه بنسټ', photo_desc: 'Shot during travelling in 2023.',
-                news_title: 'Latest Posts', bio: 'Student / Dennis', btn_follow: 'About Me', enter_blog: 'Enter Blog', projects: 'View Projects', pp:'Privacy Policy',
-                showcase_title: 'Project Directory', showcase_desc: 'Explore current and past Baipin projects',
-                project_visit: 'Visit project', project_unavailable: 'Project discontinued'
+                photo_title: 'زرغونه بنسټ',
+                photo_desc: 'Shot during travelling in 2023.',
+                news_title: 'Latest Posts',
+                bio: 'Student / Dennis',
+                btn_follow: 'About Me',
+                enter_blog: 'Enter Blog',
+                projects: 'View Projects',
+                pp: 'Privacy Policy',
+                showcase_title: 'Project Directory',
+                showcase_desc: 'Explore current and past Baipin projects',
+                project_visit: 'Visit project',
+                project_unavailable: 'Project discontinued'
             }
         };
 
         let currentLang = 'zh-CN';
+
         function renderHomepageProjects() {
             const track = document.getElementById('homepage-projects-track');
             const projectLang = currentLang === 'zh-CN' ? 'zh' : 'ps';
@@ -591,6 +640,7 @@ html[dir="rtl"] .project-showcase-controls {
                 const href = isActive ? project.url : '#';
                 const target = isActive ? ' target="_blank" rel="noopener noreferrer"' : '';
                 const statusKey = isActive ? 'project_visit' : 'project_unavailable';
+
                 return `
                     <a class="project-showcase-card${isActive ? '' : ' is-inactive'}" href="${href}"${target} aria-label="${project.title[projectLang]}">
                         <div class="project-showcase-image" style="background-image: url('${project.image}'); background-position: ${project.imagePosition};">
@@ -617,6 +667,7 @@ html[dir="rtl"] .project-showcase-controls {
                 const key = el.getAttribute('data-i18n');
                 if (i18n[lang][key]) el.innerText = i18n[lang][key];
             });
+
             renderHomepageProjects();
         }
 
@@ -628,6 +679,7 @@ html[dir="rtl"] .project-showcase-controls {
         document.getElementById('project-scroll-prev').addEventListener('click', () => {
             document.getElementById('homepage-projects-track').scrollBy({ left: -340, behavior: 'smooth' });
         });
+
         document.getElementById('project-scroll-next').addEventListener('click', () => {
             document.getElementById('homepage-projects-track').scrollBy({ left: 340, behavior: 'smooth' });
         });
