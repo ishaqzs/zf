@@ -26,7 +26,7 @@ window.BAIPIN_HOME_PROJECTS = [
     {
         title: { en: 'VisitWakhan.com', ps: 'واخان ټکۍکام (VisitWakhan.com)' },
         description: { en: 'a digital gateway into one of the world last untouched frontiers, highlighting rugged adventure travel and the indigenous heritage of the Wakhan Corridor of Afghanistan.', ps: ' یو ډیجیټل پلېټ‌فارم دۍ چې د خلګو سره کومک کوي تر څو په اسانۍ سره واخان ته چې د نړۍ بام هم بلل کيږي، سفر وکړي.' },
-        url: 'https://radio.baipon.com',
+        url: 'https://VisitWakhan.com',
         icon: 'travel_explore',
         image: 'https://upload.wikimedia.org/wikipedia/commons/0/0c/Mount_Noshaq_seen_from_the_base_camp_(photo_Louis_Meunier).jpg',
         imagePosition: 'left center',
