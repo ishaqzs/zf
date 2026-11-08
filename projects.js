@@ -6,7 +6,7 @@ window.BAIPIN_HOME_PROJECTS = [
         title: { zh: '百品博客', ps: 'Baipin Blog' },
         description: { zh: 'MDs', ps: 'The personal blog of the site owner.' },
         url: 'https://baipin.pw',
-        icon: 'book_ribbon',
+        icon: 'collections_bookmark',
         image: 'img/blog.jpeg',
         imagePosition: 'center',
         status: 'active'
