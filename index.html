@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -21,7 +21,8 @@
     <link rel="stylesheet" href="https://unpkg.com/mdui@2.0.3/mdui.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://unpkg.com/mdui@2.0.3/mdui.global.js"></script>
-
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Round-Dots/Vazirmatn-RD-font-face.css">
     <style>
         :root {
             --nav-height: 64px;
@@ -41,7 +42,7 @@
             padding: 0;
             width: 100%;
             overflow-x: hidden;
-            font-family: "Product Sans", system-ui, -apple-system, sans-serif;
+            font-family: "Vazirmatn",sans-serif;
             background-color: transparent !important;
             padding-top: var(--nav-height);
         }
@@ -134,7 +135,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 40px 0 32px;
+            padding: 10px 0 10px;
             box-sizing: border-box;
         }
 
@@ -165,6 +166,7 @@
 
         .main-card {
             padding: 40px;
+            margin-top: calc(32px - 6cm);
         }
 
         .sidebar-card {
@@ -200,7 +202,7 @@
         .project-showcase {
             max-width: var(--content-max-width);
             width: calc(100% - 40px);
-            margin: 32px auto 72px;
+            margin: calc(32px - 7cm) auto 72px;
             position: relative;
             z-index: 40;
         }
@@ -364,11 +366,12 @@
             .hero-section {
                 padding: 30px 0 18px;
             }
-            .project-showcase {
-                width: calc(100% - 32px);
-  margin-top: calc(32px - 2cm);
-  margin-bottom: 52px;
-            }
+    .project-showcase {
+        width: calc(100% - 32px);
+        margin-top: calc(32px - 6cm);
+        margin-bottom: 52px;
+    }
+
             .project-showcase-header {
                 align-items: flex-end;
             }
@@ -379,6 +382,7 @@
                 grid-auto-columns: minmax(250px, 82vw);
             }
             .floating-container {
+            margin-top: calc(32px - 1cm);
                 grid-template-columns: 1fr;
                 width: calc(100% - 32px);
             }
@@ -392,9 +396,9 @@
         }
 
         footer {
-            background: #121212;
+            background: #fcfcfc;
             color: #777;
-            padding: 60px 20px;
+            padding: 5px 10px;
             text-align: center;
         }
 
@@ -479,10 +483,10 @@
     <mdui-navigation-drawer id="drawer" placement="right" close-on-overlay-click>
         <div style="padding: 24px;"><h2 style="margin:0; font-weight:900;">MENU</h2></div>
         <mdui-list id="drawer-list">
-            <mdui-list-item icon="home" href="#">首页</mdui-list-item>
-            <mdui-list-item icon="auto_stories" href="https://baipin.pw">博客</mdui-list-item>
-            <mdui-list-item icon="terminal" href="projects.html">项目</mdui-list-item>
-            <mdui-list-item icon="account_circle" href="https://baipin.pw/about">关于</mdui-list-item>
+            <mdui-list-item icon="home" href="#">Home</mdui-list-item>
+            <mdui-list-item icon="auto_stories" href="/stories">Stories</mdui-list-item>
+            <mdui-list-item icon="terminal" href="/projects">Projects</mdui-list-item>
+            <mdui-list-item icon="account_circle" href="/about">About</mdui-list-item>
         </mdui-list>
     </mdui-navigation-drawer>
 
@@ -490,10 +494,10 @@
         <img src="https://khan.af/svd2.svg" alt="Logo" class="nav-logo" onclick="window.location.href='#'">
 
         <div class="nav-links-container">
-            <mdui-button variant="text" href="#"><mdui-icon slot="icon" name="home"></mdui-icon><span data-i18n="nav_home">首页</span></mdui-button>
-            <mdui-button variant="text" href="https://baipin.pw"><mdui-icon slot="icon" name="auto_stories"></mdui-icon><span data-i18n="nav_blog">博客</span></mdui-button>
-            <mdui-button variant="text" href="projects.html"><mdui-icon slot="icon" name="terminal"></mdui-icon><span data-i18n="nav_projects">项目</span></mdui-button>
-            <mdui-button variant="text" href="https://baipin.pw/about"><mdui-icon slot="icon" name="account_circle"></mdui-icon><span data-i18n="nav_about">关于</span></mdui-button>
+            <mdui-button variant="text" href="#"><mdui-icon slot="icon" name="home"></mdui-icon><span data-i18n="nav_home">Home</span></mdui-button>
+            <mdui-button variant="text" href="/stories"><mdui-icon slot="icon" name="auto_stories"></mdui-icon><span data-i18n="nav_blog">Stories</span></mdui-button>
+            <mdui-button variant="text" href="/projects"><mdui-icon slot="icon" name="terminal"></mdui-icon><span data-i18n="nav_projects">Projects</span></mdui-button>
+            <mdui-button variant="text" href="/about"><mdui-icon slot="icon" name="account_circle"></mdui-icon><span data-i18n="nav_about">About</span></mdui-button>
         </div>
 
         <div style="flex-grow: 1"></div>
@@ -519,32 +523,21 @@
         
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-            <main class="main-card">
-                <h1 style="font-size: 2.5rem; margin: 0 0 20px 0; font-weight: 800; line-height: 1.2;" data-i18n="hero_title">我欲穿花寻路，直入白云深处。</h1>
-                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 32px;" data-i18n="hero_desc">
-                    欢迎造访百品入口网站。
-                </p>
+<main class="main-card">
+    <h1 style="font-size: 2.5rem; margin: 0 0 20px 0; font-weight: 800; line-height: 1.2;" data-i18n="hero_title">Zarghuna Foundation</h1>
+    <mdui-divider style="margin: 17px 0;"></mdui-divider>
 
-                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                    
-                </div>
+    <!-- Fixed line-height here to prevent the text from overlapping -->
+    <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px;" data-i18n="hero_desc">
+       The Zarghuna Foundation is a non-governmental organization (NGO) based in Kandahar, Afghanistan. Founded by Atal Khan, the organization is named in honor of his mother.
+    </p>
 
-                <mdui-divider style="margin: 40px 0;"></mdui-divider>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        
+    </div>
+</main>
+
+
 
 
 
@@ -556,25 +549,22 @@
     <section class="project-showcase" aria-labelledby="homepage-projects-title">
         <div class="project-showcase-header">
             <div>
-                <h2 class="project-showcase-heading" id="homepage-projects-title" data-i18n="showcase_title">项目导航</h2>
-                <p class="project-showcase-subtitle" data-i18n="showcase_desc">探索百品正在运行和曾经制作的项目</p>
+                <h2 class="project-showcase-heading" id="homepage-projects-title" data-i18n="showcase_title">Projects</h2>
+                <p class="project-showcase-subtitle" data-i18n="showcase_desc">Atal Khan is also the founder of the following projects</p>
             </div>
             <div class="project-showcase-controls">
-                <mdui-button-icon id="project-scroll-prev" icon="arrow_back" title="向左浏览" aria-label="向左浏览"></mdui-button-icon>
-                <mdui-button-icon id="project-scroll-next" icon="arrow_forward" title="向右浏览" aria-label="向右浏览"></mdui-button-icon>
-            </div>
-        </div>
+                <mdui-button-icon id="project-scroll-prev" icon="arrow_back" title="Browse left" aria-label="Browse left"></mdui-button-icon>
+                <mdui-button-icon id="project-scroll-next" icon="arrow_forward"
+                title="Browse right" aria-label="Browse right">
+                </mdui-button-icon>
+           
+            </div> 
+        </div> 
         <div class="project-showcase-track" id="homepage-projects-track"></div>
     </section>
 
-    <footer>
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <div style="font-weight: 900; font-size: 1.2rem; color: #fff; margin-bottom: 8px; letter-spacing: 1px;">BAIPIN.PW</div>
-            <p style="font-size: 0.8rem;">&copy; 2026 百品. All rights reserved. <a href="https://baipin.pw/privacy-policy" target="_blank" data-i18n="pp" class="mdui-link" style="color: rgba(255,255,255,0.8);">私隐政策</a></p>
-        </div>
-    </footer>
 
-    <script src="https://www.baipon.com/homepage-projects.js"></script>
+    <script src="https://ishaqzs.github.io/zf/projects.js"></script>
     <script>
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
@@ -608,51 +598,37 @@
         });
 
         const i18n = {
-            'zh-CN': {
-                nav_home: '首页',
-                nav_blog: '博客',
-                nav_projects: '项目',
-                nav_about: '关于',
-                hero_title: '我欲穿花寻路，直入白云深处。',
-                hero_desc: '欢迎造访百品入口网站。',
-                photo_title: '浙江丽水 · 云和梯田',
-                photo_desc: '摄于2023年旅行时。',
-                news_title: '最新文章',
-                bio: 'Student / Dennis',
-                btn_follow: '关于我',
-                enter_blog: '进入博客',
-                projects: '查看项目',
-                pp: '私隐政策',
-                showcase_title: '项目导航',
-                showcase_desc: '探索百品正在运行和曾经制作的项目',
-                project_visit: '访问项目',
-                project_unavailable: '项目已停止'
-            },
-            'ps': {
+            'en': {
                 nav_home: 'Home',
-                nav_blog: 'Blog',
+                nav_blog: 'Stories',
                 nav_projects: 'Projects',
                 nav_about: 'About',
+                hero_title: 'Zarghuna Foundation',
+                hero_desc: 'The Zarghuna Foundation is a non-governmental organization (NGO) based in Kandahar, Afghanistan. Founded by Atal Khan, the organization is named in honor of his mother, Zarghuna.',
+                showcase_title: 'Projects',
+                showcase_desc: 'Atal Khan is also the founder of the following projects',
+                project_visit: 'Visit Site',
+                project_unavailable: 'Not Active'
+            },
+            'ps': {
+                nav_home: 'کور',
+                nav_blog: 'کيسه',
+                nav_projects: 'پروژې',
+                nav_about: 'اړوند',
                 hero_title: 'زرغونه بنسټ',
-                hero_desc: 'Welcome to Baipin Portal.',
-                news_title: 'Latest Posts',
-                bio: 'Student / Dennis',
-                btn_follow: 'About Me',
-                enter_blog: 'Enter Blog',
-                projects: 'View Projects',
-                pp: 'Privacy Policy',
-                showcase_title: 'Project Directory',
-                showcase_desc: 'Explore current and past Baipin projects',
-                project_visit: 'Visit project',
-                project_unavailable: 'Project discontinued'
+                hero_desc: 'زرغونه بنسټ یوه غیر دولتي بنسټ دۍ چې د افغانستان په کندهار ولايت کې موقعیت لري. د زرغونې بنسټ مشر ښاغلۍ اتل خان دۍ. دا بنسټ د هغه د مور په وياړ نومول سوۍ ده.',
+                showcase_title: 'د اتل خان نورې پروژې',
+                showcase_desc: 'د لاندينۍ پروژو بنسټګر هم اتل خان دۍ',
+                project_visit: 'وېب‌پاڼې ته ورسه',
+                project_unavailable: 'شئ لا نسته'
             }
         };
 
-        let currentLang = 'zh-CN';
+        let currentLang = 'en';
 
         function renderHomepageProjects() {
             const track = document.getElementById('homepage-projects-track');
-            const projectLang = currentLang === 'zh-CN' ? 'zh' : 'ps';
+            const projectLang = currentLang === 'en' ? 'en': 'ps';
             track.innerHTML = window.BAIPIN_HOME_PROJECTS.map((project) => {
                 const isActive = project.status !== 'inactive';
                 const href = isActive ? project.url : '#';
@@ -677,7 +653,7 @@
         }
 
         function applyLanguage(lang) {
-            document.documentElement.lang = lang === 'ps' ? 'ps' : 'zh-CN';
+            document.documentElement.lang = lang === 'ps' ? 'ps' : 'en';
             document.documentElement.dir = lang === 'ps' ? 'rtl' : 'ltr';
             document.body.dir = lang === 'ps' ? 'rtl' : 'ltr';
 
@@ -690,7 +666,7 @@
         }
 
         document.getElementById('lang-btn').addEventListener('click', () => {
-            currentLang = currentLang === 'zh-CN' ? 'ps' : 'zh-CN';
+            currentLang = currentLang === 'en' ? 'ps' : 'en';
             applyLanguage(currentLang);
         });
 
@@ -704,9 +680,7 @@
 
         async function fetchRSS() {
             try {
-                const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent('https://baipin.pw/feed')}`);
                 const data = await response.json();
-                const container = document.getElementById('rss-feed-container');
                 container.innerHTML = '';
                 data.items.slice(0, 5).forEach(item => {
                     const el = document.createElement('a');
@@ -717,7 +691,6 @@
                     container.appendChild(el);
                 });
             } catch (e) {
-                document.getElementById('rss-feed-container').innerHTML = '<p>Feed 加载失败</p>';
             }
         }
 
