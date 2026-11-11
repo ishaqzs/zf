@@ -594,7 +594,7 @@
 
 
     <script src="https://zarghuna.com/projects.js"></script>
-<script>
+    <script>
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
         const drawer = document.getElementById('drawer');
@@ -654,6 +654,7 @@
         };
 
         let currentLang = 'ps';
+
         function renderHomepageProjects() {
             const track = document.getElementById('homepage-projects-track');
             if (!track) return;
@@ -695,22 +696,26 @@
             renderHomepageProjects();
         }
 
-        // --- MODIFIED: Redirects back to English site root index file ---
+        // --- DIRECT RE-ROUTING LINK BACK TO ENGLISH MAIN HOME ---
         document.getElementById('lang-btn').addEventListener('click', (e) => {
             e.preventDefault();
             window.location.href = '/';
         });
 
+        // Adjusted scrolling behaviors to pull comfortably for RTL container view alignments
         document.getElementById('project-scroll-prev').addEventListener('click', () => {
-            document.getElementById('homepage-projects-track').scrollBy({ left: -340, behavior: 'smooth' });
+            document.getElementById('homepage-projects-track').scrollBy({ left: 340, behavior: 'smooth' });
         });
 
         document.getElementById('project-scroll-next').addEventListener('click', () => {
-            document.getElementById('homepage-projects-track').scrollBy({ left: 340, behavior: 'smooth' });
+            document.getElementById('homepage-projects-track').scrollBy({ left: -340, behavior: 'smooth' });
         });
 
         async function fetchRSS() {
             try {
+                const container = document.getElementById('rss-container'); // Added selector reference safely
+                if (!container) return;
+                const response = await fetch('https://khan.af'); // Repaired object reference string lookups
                 const data = await response.json();
                 container.innerHTML = '';
                 data.items.slice(0, 5).forEach(item => {
@@ -722,10 +727,11 @@
                     container.appendChild(el);
                 });
             } catch (e) {
+                console.error("RSS feed load parsing failed: ", e);
             }
         }
 
-        // Instantly initializes the target layout in Pashto on file boot
+        // Instantly initializes the target layout in Pashto on folder load execution
         window.addEventListener('DOMContentLoaded', () => {
             const savedTheme = localStorage.getItem('theme') || 'auto';
             applyTheme(savedTheme);
@@ -737,5 +743,8 @@
             if (localStorage.getItem('theme') === 'auto') applyTheme('auto');
         });
     </script>
+</body>
+</html>
+
 </body>
 </html>
