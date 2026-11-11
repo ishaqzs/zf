@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link rel="alternate" hreflang="en" href="https://zarghuna.com" />
+<link rel="alternate" hreflang="ps" href="https://zarghuna.com/ps" />
+<link rel="alternate" hreflang="x-default" href="https://zarghuna.com" />
 <title>Zarghuna Foundation | Building a Brighter Future</title>
 <meta name="description" content="Zarghuna Foundation is a non-governmental organization (NGO) based in Kandahar, Afghanistan." data-next-head=""/>
 <meta name="keywords" content="Zarghuna Foundation, The Zarghuna Foundation, Zfoundation, Zarghona Foundation, Zarghona fdn., Zarghona Fdn, Zarghuna fdn., Zarghuna Fdn, z fdn." data-next-head=""/>
@@ -585,8 +588,8 @@
     </section>
 
 
-    <script src="/projects.js"></script>
-    <script>
+    <script src="https://zarghuna.com/projects.js"></script>
+<script>
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
         const drawer = document.getElementById('drawer');
@@ -637,7 +640,7 @@
                 nav_projects: 'پروژې',
                 nav_about: 'اړوند',
                 hero_title: 'زرغونه بنسټ',
-                hero_desc: 'زرغونه بنسټ یوه غیر دولتي بنسټ دۍ چې د افغانستان په کندهار ولايت کې موقعیت لري. د زرغونې بنسټ مشر ښاغلۍ اتل خان دۍ. دا بنسټ د هغه د مور په وياړ نومول سوۍ ده.',
+                hero_desc: 'زرغونه بنسټ یو غیرِ دولتي بنسټ دۍ چې د افغانستان په کندهار ولايت کې موقعیت لري. د زرغونې بنسټ مشر ښاغلۍ اتل خان دۍ. دا بنسټ د هغه د مور په وياړ نومول سوۍ دۍ.',
                 showcase_title: 'د اتل خان نورې پروژې',
                 showcase_desc: 'د لاندينۍ پروژو بنسټګر هم اتل خان دۍ',
                 project_visit: 'وېب‌پاڼې ته ورسه',
@@ -649,6 +652,7 @@
 
         function renderHomepageProjects() {
             const track = document.getElementById('homepage-projects-track');
+            if (!track) return;
             const projectLang = currentLang === 'en' ? 'en': 'ps';
             track.innerHTML = window.BAIPIN_HOME_PROJECTS.map((project) => {
                 const isActive = project.status !== 'inactive';
@@ -673,7 +677,8 @@
             }).join('');
         }
 
-        function applyLanguage(lang) {
+        function applyLanguage(lang, updateURL = true) {
+            currentLang = lang;
             document.documentElement.lang = lang === 'ps' ? 'ps' : 'en';
             document.documentElement.dir = lang === 'ps' ? 'rtl' : 'ltr';
             document.body.dir = lang === 'ps' ? 'rtl' : 'ltr';
@@ -684,11 +689,22 @@
             });
 
             renderHomepageProjects();
+            
+            // --- FIXED USING SAFE HASHES FOR GITHUB PAGES SINGLE-FILE ---
+            if (updateURL) {
+                if (lang === 'ps') {
+                    window.location.hash = '/ps';
+                } else {
+                    // Clears the hash tag safely out of the address bar
+                    window.history.pushState({}, document.title, window.location.pathname);
+                }
+            }
         }
 
+        // Button listener stays active and fully clickable
         document.getElementById('lang-btn').addEventListener('click', () => {
-            currentLang = currentLang === 'en' ? 'ps' : 'en';
-            applyLanguage(currentLang);
+            const nextLang = currentLang === 'en' ? 'ps' : 'en';
+            applyLanguage(nextLang);
         });
 
         document.getElementById('project-scroll-prev').addEventListener('click', () => {
@@ -715,14 +731,21 @@
             }
         }
 
-        const savedTheme = localStorage.getItem('theme') || 'auto';
-        applyTheme(savedTheme);
-        renderHomepageProjects();
-        fetchRSS();
+        // Instantly initializes the target layout if someone hits refresh or uses direct link
+        window.addEventListener('DOMContentLoaded', () => {
+            const initialLang = window.location.hash === '#/ps' ? 'ps' : 'en';
+            
+            const savedTheme = localStorage.getItem('theme') || 'auto';
+            applyTheme(savedTheme);
+            applyLanguage(initialLang, false); // false prevents pushState conflicts during document load
+            fetchRSS();
+        });
 
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
             if (localStorage.getItem('theme') === 'auto') applyTheme('auto');
         });
     </script>
+
+
 </body>
 </html>
