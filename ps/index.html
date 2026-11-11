@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="ps" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>زرغونه بنسټ | د روښانه راتلونکي پر خوا</title>
+    <meta name="description" content="زرغونه بنسټ یو غیرِ دولتي بنسټ دۍ چې د افغانستان په کندهار ولايت کې موقعیت لري." data-next-head=""/>
+    <meta name="keywords" content="زرغونه بنسټ, زرغونه فاونډېشن, د زرغونې بنسټ, Zarghuna Foundation, The Zarghuna Foundation, Zfoundation, Zarghona Foundation" data-next-head=""/>
+    <meta property="og:site_name" content="زرغونه بنسټ" />
+    <meta property="og:title" content="زرغونه بنسټ | د روښانه راتلونکي پر خوا" data-next-head=""/>
+    <meta property="og:description" content="زرغونه بنسټ یو غیرِ دولتي بنسټ دۍ چې د افغانستان په کندهار ولايت کې موقعیت لري." data-next-head=""/>
+    <meta property="og:type" content="website" data-next-head=""/>
+
+<link rel="alternate" hreflang="en" href="https://zarghuna.com/" />
+<link rel="alternate" hreflang="ps" href="https://zarghuna.com/ps/" />
+<link rel="alternate" hreflang="x-default" href="https://zarghuna.com/" />
+
+
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://khan.af/svd2.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://khan.af/svd2.svg">
+    <link rel="shortcut icon" href="https://khan.af/svd2.svg">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "زرغونه بنسټ",
+      "alternateName": ["د زرغونې بنسټ", "Zarghuna Foundation", "Zfoundation"],
+      "description": "زرغونه بنسټ یو غیرِ دولتي بنسټ دۍ چې د افغانستان په کندهار ولايت کې موقعیت لري.",
+      "url": "https://zarghuna.com/ps/",
+      "inLanguage": "ps",
+      "creator": {
+        "@type": "Person",
+        "name": "Atal Khan"
+      }
+    }
+    </script>
+
+    <script>
+        (() => {
+            const savedTheme = localStorage.getItem('theme') || 'auto';
+            const isDark = savedTheme === 'dark' ||
+                (savedTheme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            document.documentElement.dataset.themeResolved = isDark ? 'dark' : 'light';
+        })();
+    </script>
+</head>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/mdui@2.0.3/mdui.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://unpkg.com/mdui@2.0.3/mdui.global.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Round-Dots/Vazirmatn-RD-font-face.css">
+    <style>
+        :root {
+            --nav-height: 64px;
+            --content-max-width: 1200px;
+        }
+
+        html {
+            background-color: #ffffff;
+            transition: background-color 0.3s;
+        }
+        html.mdui-theme-dark {
+            background-color: #121212;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            font-family: "Vazirmatn",sans-serif;
+            background-color: transparent !important;
+            padding-top: var(--nav-height);
+        }
+
+        html[dir="rtl"] body,
+        html[dir="rtl"] .main-card,
+        html[dir="rtl"] .sidebar-card,
+        html[dir="rtl"] .project-showcase-header,
+        html[dir="rtl"] .project-showcase-content,
+        html[dir="rtl"] .project-showcase-link,
+        html[dir="rtl"] .project-showcase-subtitle {
+            direction: rtl;
+            text-align: right;
+        }
+
+        html[dir="rtl"] .nav-links-container {
+            margin-left: 0;
+            margin-right: 20px;
+        }
+
+        html[dir="rtl"] .project-showcase-controls {
+            margin-left: 0;
+            margin-right: auto;
+            direction: ltr;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/1/11/Nomads_in_Kandahar_province.jpg?') center/cover no-repeat;
+            z-index: -1;
+            transition: filter 0.5s ease;
+        }
+        .mdui-theme-dark body::before {
+            filter: brightness(0.6) contrast(1.1);
+        }
+
+        .custom-app-bar {
+            height: var(--nav-height) !important;
+            background-color: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            padding: 0 5%;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-sizing: border-box;
+            transition: all 0.3s;
+        }
+
+        .mdui-theme-light .custom-app-bar {
+            --mdui-color-on-surface: 0, 0, 0;
+            --mdui-color-on-surface-variant: 0, 0, 0;
+            --mdui-color-primary: 0, 0, 0;
+            color: rgba(0, 0, 0, 0.9);
+        }
+
+        .mdui-theme-dark .custom-app-bar {
+            background-color: rgba(28, 27, 31, 0.85) !important;
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+            --mdui-color-on-surface: 230, 225, 229;
+            color: #e6e1e5;
+        }
+
+        .nav-logo {
+            height: 28px;
+            width: auto;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .nav-links-container {
+            margin-left: 20px;
+            display: flex;
+            gap: 4px;
+        }
+
+        .hero-section {
+            width: 100%;
+            min-height: 78vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 0 10px;
+            box-sizing: border-box;
+        }
+
+        .floating-container {
+            max-width: var(--content-max-width);
+            width: calc(100% - 40px);
+            position: relative;
+            z-index: 20;
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 32px;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+
+        .main-card,
+        .sidebar-card {
+        <!-- for the box opp -->
+            transition: background 0.3s, color 0.3s;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+            background: rgba(0, 0, 0, 0.38) !important;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-radius: 40px;
+            color: #ffffff !important;
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+        }
+
+        .main-card {
+            padding: 40px;
+            margin-top: calc(32px - 6cm);
+        }
+
+        .sidebar-card {
+            padding: 40px 24px;
+            text-align: center;
+            height: fit-content;
+        }
+
+        .main-card h1,
+        .main-card p,
+        .main-card h3,
+        .main-card span,
+        .sidebar-card h2,
+        .sidebar-card p,
+        .sidebar-card span {
+            color: #ffffff !important;
+        }
+
+        .main-card .mdui-button {
+            --mdui-color-on-secondary-container: 255, 255, 255;
+            --mdui-color-primary: 255, 255, 255;
+        }
+
+        .sidebar-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid rgba(255,255,255,0.9);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            margin-bottom: 16px;
+        }
+
+        .project-showcase {
+            max-width: var(--content-max-width);
+            width: calc(100% - 40px);
+            margin: calc(32px - 7cm) auto 72px;
+            position: relative;
+            z-index: 40;
+        }
+
+        .project-showcase-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.28);
+        }
+
+        .project-showcase-heading {
+            margin: 0;
+            font-size: 1.35rem;
+            font-weight: 850;
+        }
+
+        .project-showcase-subtitle {
+            margin: 4px 0 0;
+            font-size: 0.88rem;
+            opacity: 0.88;
+        }
+
+        .project-showcase-controls {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .project-showcase-controls mdui-button-icon {
+            --mdui-color-on-surface: 255, 255, 255;
+            --mdui-color-surface-container: 255, 255, 255;
+            background: rgba(0, 0, 0, 0.32);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.24);
+        }
+
+        .project-showcase-track {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(245px, 1fr);
+            gap: 18px;
+            overflow-x: auto;
+            overscroll-behavior-inline: contain;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            padding: 2px 2px 12px;
+        }
+
+        .project-showcase-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .project-showcase-card {
+            min-width: 0;
+            min-height: 310px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            color: #171717;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 16px 34px rgba(0, 0, 0, 0.16);
+            text-decoration: none;
+            transition: transform 0.24s ease, box-shadow 0.24s ease;
+        }
+
+        .project-showcase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 38px rgba(0, 0, 0, 0.24);
+        }
+
+        .project-showcase-card.is-inactive {
+            filter: saturate(0.35);
+            opacity: 0.8;
+        }
+
+        .project-showcase-image {
+            height: 142px;
+            flex-shrink: 0;
+            position: relative;
+            background: #d9e4e8 center/cover no-repeat;
+        }
+
+        .project-showcase-image::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.42));
+        }
+
+        .project-showcase-icon {
+            position: absolute;
+            right: 14px;
+            bottom: 12px;
+            z-index: 1;
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.48);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 50%;
+            backdrop-filter: blur(8px);
+        }
+
+        .project-showcase-content {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            padding: 18px 18px 20px;
+        }
+
+        .project-showcase-content h3 {
+            margin: 0;
+            font-size: 1.05rem;
+            line-height: 1.35;
+        }
+
+        .project-showcase-content p {
+            margin: 8px 0 0;
+            color: #5c6265;
+            font-size: 0.86rem;
+            line-height: 1.55;
+        }
+
+        .project-showcase-link {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: auto;
+            padding-top: 18px;
+            color: #006b70;
+            font-size: 0.84rem;
+            font-weight: 700;
+        }
+
+        .project-showcase-card.is-inactive .project-showcase-link {
+            color: #777;
+        }
+
+        .rss-item {
+            display: block;
+            padding: 16px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            margin-bottom: 12px;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        @media (max-width: 900px) {
+            .nav-links-container { display: none; }
+            .mobile-menu-btn { display: inline-flex !important; }
+            .hero-section {
+                padding: 30px 0 18px;
+            }
+    .project-showcase {
+        width: calc(100% - 32px);
+        margin-top: calc(32px - 6cm);
+        margin-bottom: 52px;
+    }
+
+            .project-showcase-header {
+                align-items: flex-end;
+            }
+            .project-showcase-subtitle {
+                max-width: 230px;
+            }
+            .project-showcase-track {
+                grid-auto-columns: minmax(250px, 82vw);
+            }
+            .floating-container {
+            margin-top: calc(32px - 1cm);
+                grid-template-columns: 1fr;
+                width: calc(100% - 32px);
+            }
+            .sidebar-card {
+                order: -1;
+            }
+        }
+
+        .mobile-menu-btn {
+            display: none;
+        }
+
+        footer {
+            background: #fcfcfc;
+            color: #777;
+            padding: 5px 10px;
+            text-align: center;
+        }
+
+        html[data-theme-resolved="light"] .custom-app-bar,
+        html[data-theme-resolved="light"] .custom-app-bar mdui-button,
+        html[data-theme-resolved="light"] .custom-app-bar mdui-button-icon,
+        html[data-theme-resolved="light"] .custom-app-bar mdui-icon {
+            color: #111827 !important;
+        }
+
+        html[data-theme-resolved="dark"] .custom-app-bar {
+            background-color: rgba(28, 27, 31, 0.85) !important;
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+
+        html[data-theme-resolved="dark"] .custom-app-bar,
+        html[data-theme-resolved="dark"] .custom-app-bar mdui-button,
+        html[data-theme-resolved="dark"] .custom-app-bar mdui-button-icon,
+        html[data-theme-resolved="dark"] .custom-app-bar mdui-icon {
+            color: #f3f4f6 !important;
+        }
+
+        html[data-theme-resolved="light"] mdui-button[variant="text"],
+        html[data-theme-resolved="light"] mdui-button[variant="outlined"],
+        html[data-theme-resolved="light"] mdui-button[variant="tonal"],
+        html[data-theme-resolved="light"] mdui-button-icon,
+        html[data-theme-resolved="light"] mdui-icon {
+            color: #111827 !important;
+        }
+
+        html[data-theme-resolved="light"] mdui-button[variant="filled"] {
+            background: #1f2937 !important;
+            color: #ffffff !important;
+        }
+
+        html[data-theme-resolved="dark"] mdui-button[variant="text"],
+        html[data-theme-resolved="dark"] mdui-button[variant="outlined"],
+        html[data-theme-resolved="dark"] mdui-button[variant="tonal"],
+        html[data-theme-resolved="dark"] mdui-button-icon,
+        html[data-theme-resolved="dark"] mdui-icon {
+            color: #f3f4f6 !important;
+        }
+
+        html[data-theme-resolved="dark"] mdui-button[variant="filled"] {
+            background: #e5e7eb !important;
+            color: #111827 !important;
+        }
+
+        html[data-theme-resolved="light"] .project-showcase-card {
+            color: #171717;
+            background: #ffffff;
+        }
+
+        html[data-theme-resolved="light"] .project-showcase-content p {
+            color: #5c6265;
+        }
+
+        html[data-theme-resolved="dark"] .project-showcase-card {
+            color: #f3f4f6;
+            background: #25252c;
+        }
+
+        html[data-theme-resolved="light"] .project-showcase-link {
+            color: #0f7b6e;
+        }
+
+        html[data-theme-resolved="dark"] .project-showcase-link {
+            color: #7dd3c7;
+        }
+
+        html[data-theme-resolved="light"] .project-showcase-icon,
+        html[data-theme-resolved="light"] .project-showcase-icon mdui-icon,
+        html[data-theme-resolved="dark"] .project-showcase-icon,
+        html[data-theme-resolved="dark"] .project-showcase-icon mdui-icon {
+            color: #ffffff !important;
+        }
+    </style>
+</head>
+
+<body class="mdui-theme-auto">
+
+    <mdui-navigation-drawer id="drawer" placement="right" close-on-overlay-click>
+        <div style="padding: 24px;"><h2 style="margin:0; font-weight:900;">MENU</h2></div>
+        <mdui-list id="drawer-list">
+            <mdui-list-item icon="home" href="#">Home</mdui-list-item>
+            <mdui-list-item icon="auto_stories" href="/stories">Stories</mdui-list-item>
+            <mdui-list-item icon="terminal" href="/projects">Projects</mdui-list-item>
+            <mdui-list-item icon="account_circle" href="/about">About</mdui-list-item>
+        </mdui-list>
+    </mdui-navigation-drawer>
+
+    <header class="custom-app-bar">
+        <img src="https://khan.af/svd2.svg" alt="Logo" class="nav-logo" onclick="window.location.href='#'">
+
+        <div class="nav-links-container">
+            <mdui-button variant="text" href="#"><mdui-icon slot="icon" name="home"></mdui-icon><span data-i18n="nav_home">Home</span></mdui-button>
+            <mdui-button variant="text" href="/stories"><mdui-icon slot="icon" name="auto_stories"></mdui-icon><span data-i18n="nav_blog">Stories</span></mdui-button>
+            <mdui-button variant="text" href="/projects"><mdui-icon slot="icon" name="terminal"></mdui-icon><span data-i18n="nav_projects">Projects</span></mdui-button>
+            <mdui-button variant="text" href="/about"><mdui-icon slot="icon" name="account_circle"></mdui-icon><span data-i18n="nav_about">About</span></mdui-button>
+        </div>
+
+        <div style="flex-grow: 1"></div>
+
+        <mdui-button-icon id="theme-toggle" icon="light_mode"></mdui-button-icon>
+        <mdui-button-icon icon="translate" id="lang-btn"></mdui-button-icon>
+        <mdui-button-icon icon="menu" class="mobile-menu-btn" onclick="document.getElementById('drawer').open = true"></mdui-button-icon>
+    </header>
+
+    <section class="hero-section">
+        <div class="floating-container">
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+<main class="main-card">
+    <h1 style="font-size: 2.5rem; margin: 0 0 20px 0; font-weight: 800; line-height: 1.2;" data-i18n="hero_title">Zarghuna Foundation</h1>
+    <mdui-divider style="margin: 17px 0;"></mdui-divider>
+
+    <!-- Fixed line-height here to prevent the text from overlapping -->
+    <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px;" data-i18n="hero_desc">
+       The Zarghuna Foundation is a non-governmental organization (NGO) based in Kandahar, Afghanistan. Founded by Atal Khan, the organization is named in honor of his mother.
+    </p>
+
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        
+    </div>
+</main>
+
+
+
+
+
+
+            </aside>
+        </div>
+    </section>
+
+    <section class="project-showcase" aria-labelledby="homepage-projects-title">
+        <div class="project-showcase-header">
+            <div>
+                <h2 class="project-showcase-heading" id="homepage-projects-title" data-i18n="showcase_title">Projects</h2>
+                <p class="project-showcase-subtitle" data-i18n="showcase_desc">Atal Khan is also the founder of the following projects</p>
+            </div>
+            <div class="project-showcase-controls">
+                <mdui-button-icon id="project-scroll-prev" icon="arrow_back" title="Browse left" aria-label="Browse left"></mdui-button-icon>
+                <mdui-button-icon id="project-scroll-next" icon="arrow_forward"
+                title="Browse right" aria-label="Browse right">
+                </mdui-button-icon>
+           
+            </div> 
+        </div> 
+        <div class="project-showcase-track" id="homepage-projects-track"></div>
+    </section>
+
+
+    <script src="https://zarghuna.com/projects.js"></script>
+<script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const drawer = document.getElementById('drawer');
+
+        function updateIcon() {
+            const isDark = html.classList.contains('mdui-theme-dark') ||
+                (html.classList.contains('mdui-theme-auto') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            themeToggle.icon = isDark ? 'dark_mode' : 'light_mode';
+        }
+
+        function applyTheme(theme) {
+            html.classList.remove('mdui-theme-light', 'mdui-theme-dark', 'mdui-theme-auto');
+            html.classList.add(`mdui-theme-${theme}`);
+            const isDark = theme === 'dark' ||
+                (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            html.dataset.themeResolved = isDark ? 'dark' : 'light';
+            updateIcon();
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const isCurrentlyDark = html.classList.contains('mdui-theme-dark') ||
+                (html.classList.contains('mdui-theme-auto') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            const nextTheme = isCurrentlyDark ? 'light' : 'dark';
+            applyTheme(nextTheme);
+            localStorage.setItem('theme', nextTheme);
+        });
+
+        document.getElementById('drawer-list').addEventListener('click', () => {
+            drawer.open = false;
+        });
+
+        const i18n = {
+            'en': {
+                nav_home: 'Home',
+                nav_blog: 'Stories',
+                nav_projects: 'Projects',
+                nav_about: 'About',
+                hero_title: 'Zarghuna Foundation',
+                hero_desc: 'The Zarghuna Foundation is a non-governmental organization (NGO) based in Kandahar, Afghanistan. Founded by Atal Khan, the organization is named in honor of his mother, Zarghuna.',
+                showcase_title: 'Projects',
+                showcase_desc: 'Atal Khan is also the founder of the following projects',
+                project_visit: 'Visit Site',
+                project_unavailable: 'Not Active'
+            },
+            'ps': {
+                nav_home: 'کور',
+                nav_blog: 'کيسه',
+                nav_projects: 'پروژې',
+                nav_about: 'اړوند',
+                hero_title: 'زرغونه بنسټ',
+                hero_desc: 'زرغونه بنسټ یو غیرِ دولتي بنسټ دۍ چې د افغانستان په کندهار ولايت کې موقعیت لري. د زرغونې بنسټ مشر ښاغلۍ اتل خان دۍ. دا بنسټ د هغه د مور په وياړ نومول سوۍ دۍ.',
+                showcase_title: 'د اتل خان نورې پروژې',
+                showcase_desc: 'د لاندينۍ پروژو بنسټګر هم اتل خان دۍ',
+                project_visit: 'وېب‌پاڼې ته ورسه',
+                project_unavailable: 'شئ لا نسته'
+            }
+        };
+
+        let currentLang = 'ps';
+        function renderHomepageProjects() {
+            const track = document.getElementById('homepage-projects-track');
+            if (!track) return;
+            const projectLang = currentLang === 'en' ? 'en': 'ps';
+            track.innerHTML = window.BAIPIN_HOME_PROJECTS.map((project) => {
+                const isActive = project.status !== 'inactive';
+                const href = isActive ? project.url : '#';
+                const target = isActive ? ' target="_blank" rel="noopener noreferrer"' : '';
+                const statusKey = isActive ? 'project_visit' : 'project_unavailable';
+
+                return `
+                    <a class="project-showcase-card${isActive ? '' : ' is-inactive'}" href="${href}"${target} aria-label="${project.title[projectLang]}">
+                        <div class="project-showcase-image" style="background-image: url('${project.image}'); background-position: ${project.imagePosition};">
+                            <span class="project-showcase-icon"><mdui-icon name="${project.icon}"></mdui-icon></span>
+                        </div>
+                        <div class="project-showcase-content">
+                            <h3 data-project-title>${project.title[projectLang]}</h3>
+                            <p data-project-description>${project.description[projectLang]}</p>
+                            <span class="project-showcase-link" data-project-status>
+                                ${i18n[currentLang][statusKey]} <mdui-icon name="${isActive ? 'arrow_forward' : 'block'}" style="font-size: 18px;"></mdui-icon>
+                            </span>
+                        </div>
+                    </a>
+                `;
+            }).join('');
+        }
+
+        function applyLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang === 'ps' ? 'ps' : 'en';
+            document.documentElement.dir = lang === 'ps' ? 'rtl' : 'ltr';
+            document.body.dir = lang === 'ps' ? 'rtl' : 'ltr';
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18n[lang][key]) el.innerText = i18n[lang][key];
+            });
+
+            renderHomepageProjects();
+        }
+
+        // --- MODIFIED: Redirects back to English site root index file ---
+        document.getElementById('lang-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = '/';
+        });
+
+        document.getElementById('project-scroll-prev').addEventListener('click', () => {
+            document.getElementById('homepage-projects-track').scrollBy({ left: -340, behavior: 'smooth' });
+        });
+
+        document.getElementById('project-scroll-next').addEventListener('click', () => {
+            document.getElementById('homepage-projects-track').scrollBy({ left: 340, behavior: 'smooth' });
+        });
+
+        async function fetchRSS() {
+            try {
+                const data = await response.json();
+                container.innerHTML = '';
+                data.items.slice(0, 5).forEach(item => {
+                    const el = document.createElement('a');
+                    el.className = 'rss-item';
+                    el.href = item.link;
+                    el.target = '_blank';
+                    el.innerHTML = `<div style="font-weight: 700;">${item.title}</div><div style="font-size: 0.8rem; color: #999; margin-top: 4px;">${new Date(item.pubDate).toLocaleDateString()}</div>`;
+                    container.appendChild(el);
+                });
+            } catch (e) {
+            }
+        }
+
+        // Instantly initializes the target layout in Pashto on file boot
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'auto';
+            applyTheme(savedTheme);
+            applyLanguage('ps'); 
+            fetchRSS();
+        });
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+            if (localStorage.getItem('theme') === 'auto') applyTheme('auto');
+        });
+    </script>
+</body>
+</html>
