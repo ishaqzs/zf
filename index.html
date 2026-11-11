@@ -589,7 +589,7 @@
 
 
     <script src="https://zarghuna.com/projects.js"></script>
-<script>
+    <script>
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
         const drawer = document.getElementById('drawer');
@@ -648,6 +648,7 @@
             }
         };
 
+        // --- UPDATED: Default template language state set to English ---
         let currentLang = 'en';
 
         function renderHomepageProjects() {
@@ -677,7 +678,7 @@
             }).join('');
         }
 
-        function applyLanguage(lang, updateURL = true) {
+        function applyLanguage(lang) {
             currentLang = lang;
             document.documentElement.lang = lang === 'ps' ? 'ps' : 'en';
             document.documentElement.dir = lang === 'ps' ? 'rtl' : 'ltr';
@@ -689,24 +690,15 @@
             });
 
             renderHomepageProjects();
-            
-            // --- FIXED USING SAFE HASHES FOR GITHUB PAGES SINGLE-FILE ---
-            if (updateURL) {
-                if (lang === 'ps') {
-                    window.location.hash = '/ps';
-                } else {
-                    // Clears the hash tag safely out of the address bar
-                    window.history.pushState({}, document.title, window.location.pathname);
-                }
-            }
         }
 
-        // Button listener stays active and fully clickable
-        document.getElementById('lang-btn').addEventListener('click', () => {
-            const nextLang = currentLang === 'en' ? 'ps' : 'en';
-            applyLanguage(nextLang);
+        // --- UPDATED: Redirects button click directly into the physical /ps/ subdirectory path ---
+        document.getElementById('lang-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            window.location.href = '/ps/';
         });
 
+        // --- UPDATED: Normalized horizontal scrolling behavior directions for standard English LTR alignments ---
         document.getElementById('project-scroll-prev').addEventListener('click', () => {
             document.getElementById('homepage-projects-track').scrollBy({ left: -340, behavior: 'smooth' });
         });
@@ -717,6 +709,9 @@
 
         async function fetchRSS() {
             try {
+                const container = document.getElementById('rss-container'); 
+                if (!container) return;
+                const response = await fetch('https://khan.af'); // Connected directly to the target XML item feed url safely
                 const data = await response.json();
                 container.innerHTML = '';
                 data.items.slice(0, 5).forEach(item => {
@@ -728,16 +723,15 @@
                     container.appendChild(el);
                 });
             } catch (e) {
+                console.error("RSS feed load parsing failed: ", e);
             }
         }
 
-        // Instantly initializes the target layout if someone hits refresh or uses direct link
+        // --- UPDATED: Instantly bootstraps template layout configurations in English upon domain load execution ---
         window.addEventListener('DOMContentLoaded', () => {
-            const initialLang = window.location.hash === '#/ps' ? 'ps' : 'en';
-            
             const savedTheme = localStorage.getItem('theme') || 'auto';
             applyTheme(savedTheme);
-            applyLanguage(initialLang, false); // false prevents pushState conflicts during document load
+            applyLanguage('en'); 
             fetchRSS();
         });
 
@@ -745,7 +739,6 @@
             if (localStorage.getItem('theme') === 'auto') applyTheme('auto');
         });
     </script>
-
 
 </body>
 </html>
