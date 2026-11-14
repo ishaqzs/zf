@@ -512,10 +512,10 @@
     <mdui-navigation-drawer id="drawer" placement="right" close-on-overlay-click>
         <div style="padding: 24px;"><h2 style="margin:0; font-weight:900;">لړليک</h2></div>
         <mdui-list id="drawer-list">
-            <mdui-list-item icon="home" href="#">کور</mdui-list-item>
-            <mdui-list-item icon="auto_stories" href="/کيسې"> کيسې</mdui-list-item>
-            <mdui-list-item icon="terminal" href="/پروژې"> پروژې</mdui-list-item>
-            <mdui-list-item icon="account_circle" href="/اړوند"> اړوند</mdui-list-item>
+            <mdui-list-item icon="home" href="#">&nbsp;کور</mdui-list-item>
+            <mdui-list-item icon="auto_stories" href="/کيسې"> &nbsp;کيسې</mdui-list-item>
+            <mdui-list-item icon="terminal" href="/پروژې"> &nbsp;پروژې</mdui-list-item>
+            <mdui-list-item icon="account_circle" href="/اړوند"> &nbsp;اړوند</mdui-list-item>
         </mdui-list>
     </mdui-navigation-drawer>
 
@@ -538,27 +538,14 @@
 
     <section class="hero-section">
         <div class="floating-container">
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
 <main class="main-card">
-    <h1 style="font-size: 2.5rem; margin: 0 0 20px 0; font-weight: 800; line-height: 1.2;" data-i18n="hero_title">Zarghuna Foundation</h1>
+    <h1 style="font-size: 2.5rem; margin: 0 0 20px 0; font-weight: 800; line-height: 1.2;" data-i18n="hero_title">زرغونه بنسټ</h1>
     <mdui-divider style="margin: 17px 0;"></mdui-divider>
 
     <!-- Fixed line-height here to prevent the text from overlapping -->
     <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 25px;" data-i18n="hero_desc">
-       The Zarghuna Foundation is a non-governmental organization (NGO) based in Kandahar, Afghanistan. Founded by Atal Khan, the organization is named in honor of his mother.
+       زرغونه بنسټ یو غیرِ دولتي بنسټ دۍ چې د افغانستان په کندهار ولايت کې موقعیت لري. د زرغونې بنسټ مشر ښاغلۍ اتل خان دۍ. دا بنسټ د هغه د مور په وياړ نومول سوۍ دۍ.
     </p>
 
     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
@@ -578,8 +565,9 @@
     <section class="project-showcase" aria-labelledby="homepage-projects-title">
         <div class="project-showcase-header">
             <div>
-                <h2 class="project-showcase-heading" id="homepage-projects-title" data-i18n="showcase_title">Projects</h2>
-                <p class="project-showcase-subtitle" data-i18n="showcase_desc">Atal Khan is also the founder of the following projects</p>
+                <h2 class="project-showcase-heading" id="homepage-projects-title" data-i18n="showcase_title">د اتل خان نورې پروژې
+</h2>
+                <p class="project-showcase-subtitle" data-i18n="showcase_desc">د لاندينۍ پروژو بنسټګر هم اتل خان دۍ</p>
             </div>
             <div class="project-showcase-controls">
                 <mdui-button-icon id="project-scroll-prev" icon="arrow_back" title="Browse left" aria-label="Browse left"></mdui-button-icon>
@@ -593,7 +581,7 @@
     </section>
 
 
-    <script src="https://zarghuna.com/projects.js"></script>
+    <script src="/projects.js"></script>
     <script>
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;
@@ -627,18 +615,6 @@
         });
 
         const i18n = {
-            'en': {
-                nav_home: 'Home',
-                nav_blog: 'Stories',
-                nav_projects: 'Projects',
-                nav_about: 'About',
-                hero_title: 'Zarghuna Foundation',
-                hero_desc: 'The Zarghuna Foundation is a non-governmental organization (NGO) based in Kandahar, Afghanistan. Founded by Atal Khan, the organization is named in honor of his mother, Zarghuna.',
-                showcase_title: 'Projects',
-                showcase_desc: 'Atal Khan is also the founder of the following projects',
-                project_visit: 'Visit Site',
-                project_unavailable: 'Not Active'
-            },
             'ps': {
                 nav_home: 'کور',
                 nav_blog: 'کيسې',
@@ -652,7 +628,7 @@
                 project_unavailable: 'شئ لا نسته'
             }
         };
-
+        
         let currentLang = 'ps';
 
         function renderHomepageProjects() {
