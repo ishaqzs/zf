@@ -4,7 +4,7 @@
 window.BAIPIN_HOME_PROJECTS = [
     {
         title: { en: 'KHAN.af', ps: 'خان ټکۍاف (KHAN.af)' },
-        description: { en: 'The official portfolio website of Atal Khan', ps: 'د زرغونې بنسټ د بنسټګر اتل خان رسمي وېبپاڼه.' },
+        description: { en: 'The official portfolio website of Isak Khan', ps: 'د زرغونې بنسټ د بنسټګر اتل خان رسمي وېبپاڼه.' },
         url: 'https://KHAN.af',
         icon: 'language',
         image: 'https://www.khan.af/svd2.svg',
@@ -34,7 +34,7 @@ window.BAIPIN_HOME_PROJECTS = [
     },
     {
         title: { en: 'KanTop', ps: 'کن‌ټاپ' },
-        description: { en: 'a special project by Atal Khan', ps: 'د اتل خان ځانګړې پروژه' },
+        description: { en: 'a special project by Isak Khan', ps: 'د اتل خان ځانګړې پروژه' },
         url: '#',
         icon: 'question_mark',
         image: 'https://upload.wikimedia.org/wikipedia/commons/4/4d/Reg_district_in_Kandahar_province.jpg?',
