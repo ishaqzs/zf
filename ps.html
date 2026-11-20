@@ -17,9 +17,9 @@
 
 
     <meta name="theme-color" content="#ffffff">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://khan.af/svd2.svg">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://khan.af/svd2.svg">
-    <link rel="shortcut icon" href="https://khan.af/svd2.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://isakkhan.com/Isak_Khan.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://isakkhan.com/Isak_Khan.svg">
+    <link rel="shortcut icon" href="https://isakkhan.com/Isak_Khan.svg">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -520,7 +520,7 @@
     </mdui-navigation-drawer>
 
     <header class="custom-app-bar">
-        <img src="https://khan.af/svd2.svg" alt="Logo" class="nav-logo" onclick="window.location.href='#'">
+        <img src="https://isakkhan.com/Isak_Khan.svg" alt="Logo" class="nav-logo" onclick="window.location.href='#'">
 
         <div class="nav-links-container">
             <mdui-button variant="text" href="#"><mdui-icon slot="icon" name="home"></mdui-icon><span data-i18n="nav_home">کور</span></mdui-button>
@@ -690,7 +690,7 @@
             try {
                 const container = document.getElementById('rss-container'); // Added selector reference safely
                 if (!container) return;
-                const response = await fetch('https://khan.af'); // Repaired object reference string lookups
+                const response = await fetch('https://isakkhan.com'); // Repaired object reference string lookups
                 const data = await response.json();
                 container.innerHTML = '';
                 data.items.slice(0, 5).forEach(item => {
