@@ -3,7 +3,7 @@
  */
 window.BAIPIN_HOME_PROJECTS = [
     {
-        title: { en: 'KHAN.af', ps: 'ایساک خان ټکۍکام (IsakKhan.com)' },
+        title: { en: 'IsakKhan.com', ps: 'ایساک خان ټکۍکام (IsakKhan.com)' },
         description: { en: 'The official portfolio website of Isak Khan', ps: 'د زرغونې بنسټ د بنسټګر ایساک خان رسمي وېب‌پاڼه.' },
         url: 'https://IsakKhan.com',
         icon: 'language',
