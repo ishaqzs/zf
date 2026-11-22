@@ -7,7 +7,7 @@ window.BAIPIN_HOME_PROJECTS = [
         description: { en: 'The official portfolio website of Isak Khan', ps: 'د زرغونې بنسټ د بنسټګر ایساک خان رسمي وېب‌پاڼه.' },
         url: 'https://IsakKhan.com',
         icon: 'language',
-        image: 'https://www.khan.af/svd2.svg',
+        image: 'https://www.IsakKhan.com/Isak_Khan.svg',
         imagePosition: 'center',
         status: 'active'
     },
